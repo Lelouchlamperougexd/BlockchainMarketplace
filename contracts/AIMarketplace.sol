@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "./@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./@openzeppelin/contracts/access/Ownable.sol";
 
-contract AIMarketplace is ERC20, Ownable {
+contract AITU_ABA_SE2323 is ERC20, Ownable {
     struct AIModel {
         string name;
         string description;
@@ -56,7 +56,7 @@ contract AIMarketplace is ERC20, Ownable {
 
     TransferRecord public recentTransfer;
 
-    constructor(address initialOwner) ERC20("AITU_SE2331", "UGT") Ownable(initialOwner) {
+    constructor(address initialOwner) ERC20("AITU_ABA_SE2323", "ABA") Ownable(initialOwner) {
         _mint(initialOwner, 2000 * 10**decimals());
     }
 

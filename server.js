@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -12,6 +13,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 const upload = multer({
   dest: 'uploads/',
   limits: { fileSize: 50 * 1024 * 1024 },
+});
+
+app.get("/config", (req, res) => {
+  res.json({
+    tokenAddress: process.env.TOKEN_ADDRESS,
+    tokenABI: JSON.parse(process.env.TOKEN_ABI)
+  });
 });
 
 let models = [];

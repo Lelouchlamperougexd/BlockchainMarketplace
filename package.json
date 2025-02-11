@@ -22,7 +22,8 @@
     "express": "^4.21.2",
     "multer": "^1.4.5-lts.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "web3": "^4.16.0"
   },
   "directories": {
     "test": "test"
