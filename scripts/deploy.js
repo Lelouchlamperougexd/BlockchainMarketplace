@@ -1,23 +1,16 @@
 const hre = require("hardhat");
 
 async function main() {
-  const [deployer] = await ethers.getSigners();
+  const [deployer] = await hre.ethers.getSigners();
+  console.log("Deploying contract with the account:", deployer.address);
 
-  console.log("Deploying contracts with the account:", deployer.address);
+  const ContractFactory = await hre.ethers.getContractFactory("AITU_SE2331");
 
-  // Deploy AIToken
-  const AIToken = await hre.ethers.getContractFactory("AIToken");
-  const aiToken = await AIToken.deploy(deployer.address);
-  await aiToken.waitForDeployment();
+  const contract = await ContractFactory.deploy();
 
-  console.log("AIToken deployed to:", await aiToken.getAddress());
+  await contract.waitForDeployment();
 
-  // Deploy AIMarketplace
-  const AIMarketplace = await hre.ethers.getContractFactory("AIMarketplace");
-  const marketplace = await AIMarketplace.deploy(await aiToken.getAddress(), deployer.address);
-  await marketplace.waitForDeployment();
-
-  console.log("AIMarketplace deployed to:", await marketplace.getAddress());
+  console.log("Contract deployed to:", await contract.getAddress());
 }
 
 main().catch((error) => {

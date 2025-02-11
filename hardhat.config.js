@@ -1,19 +1,15 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
+require("dotenv").config(); 
 
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.20",
   networks: {
-    hardhat: {
-      chainId: 1337
+    holesky: {
+      url: process.env.HOLESKY_RPC_URL || "", 
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [], 
     },
-    localhost: {
-      url: "http://127.0.0.1:8545"
-    },
-    // Add other networks as needed
   },
-  paths: {
-    artifacts: './src/artifacts',
+  etherscan: {
+    apiKey: "GA8GAI456UFRQSF2HMTY5UISHC8TJJKXU7"  // You'll need to get this from Etherscan
   }
 };
