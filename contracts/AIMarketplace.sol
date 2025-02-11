@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./@openzeppelin/contracts/access/Ownable.sol";
 
-contract AITU_SE2331 is ERC20, Ownable {
+contract AIMarketplace is ERC20, Ownable {
     struct AIModel {
         string name;
         string description;
@@ -159,7 +159,7 @@ function getRecentTransfer() public view returns (address, address, uint256, uin
         return convertTimestampToString(recentTransfer.timestamp);
     }
 
-    function convertTimestampToString(uint256 timestamp) internal view returns (string memory) {
+    function convertTimestampToString(uint256 timestamp) internal pure returns (string memory) {
         uint256 SECONDS_IN_DAY = 86400;
         uint256 SECONDS_IN_HOUR = 3600;
         uint256 SECONDS_IN_MINUTE = 60;
