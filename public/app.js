@@ -34,26 +34,6 @@ async function connectWallet() {
   }
 }
 
-async function connectWallet() {
-  if (window.ethereum) {
-    try {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      web3 = new Web3(window.ethereum);
-      const accounts = await web3.eth.getAccounts();
-      if (accounts.length > 0) {
-        account = accounts[0];
-        document.getElementById('walletAddress').textContent = `Wallet Address: ${account}`;
-        await getTokenBalance(account);
-      } else {
-        alert("No accounts found. Please unlock your MetaMask wallet.");
-      }
-    } catch (error) {
-      alert("Failed to connect to MetaMask. Please try again.");
-    }
-  } else {
-    alert("MetaMask is not installed. Please install MetaMask.");
-  }
-}
 
 async function getTokenBalance(account) {
   const contract = new web3.eth.Contract(tokenABI, tokenAddress);
